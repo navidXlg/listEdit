@@ -9,16 +9,14 @@ function App(){
     const editBookById = (id, newTitel)=>{
 
         const editBook = books.map((book)=>{
-            if(book.id ===id){
-                return {...book, titel : newTitel } 
+            if(book.id === id){
+                return {...book, title : newTitel } 
             };
 
             return book
         });
         setBook(editBook);
     };
-
-
 
     const handelCreate = (title)=>{
        const update = [
@@ -37,6 +35,7 @@ function App(){
     };
 
     return <div className="app">
+            <h1>Reading List</h1>
             <BookList books={books} bookDelete = {deletBookByID} bookEdit = {editBookById}/>
             <BookCreate onSubmit = {handelCreate}/>
            </div>
