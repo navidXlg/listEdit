@@ -1,21 +1,25 @@
 import { useState } from "react";
 
-function BookEdit(){
+function BookEdit({book, BookEdit , onSubmit}){
 
-    const[inputTitel, setInputTitel] = useState("");
+    const[inputTitel, setInputTitel] = useState(book.title);
     const handelInput = (event)=>{
         setInputTitel(event.target.value);
     };
-    const handelSubmit = ()=>{
-        
-    }
+
+    const handelSubmit = (event)=>{
+        event.preventDeafulats();
+        BookEdit(book.id, inputTitel);
+        onSubmit();
+    };
 
 
-    return<form className="book-edit" onSubmit={handelSubmit}>
+    return(
+    <form className="book-edit" onSubmit={handelSubmit}>
        <label>title</label> 
-       <input className="input" onChange={handelInput}></input>
+       <input className="input" value={inputTitel} onChange={handelInput}></input>
        <button className="button is-primary">Save</button>
-    </form>
+    </form>)
 };
 
 export default BookEdit;
